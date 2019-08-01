@@ -1,0 +1,56 @@
+﻿<% include ./partials/header %>
+<div class="container mt-3">
+
+	<div>
+		<h1>A Journey Through Space<h1>
+	</div>
+
+	<div class="card">
+		<div class="row no-gutters">
+			<div class="col-md-8">
+				<div class="card-body text-white">
+					<h5 class="card-title">NASA API PROJECT</h5>
+					<p class="card-text">This project is built using NASA's public API data.</p>
+					<p>View more about NASA's API at <a id="nasaLink" href="https://api.nasa.gov/#getting-started">https://api.nasa.gov/#getting-started</a></p>
+				 </div>
+				 <div class=card-footer>
+					<p class="card-text"><small class="text-muted">A project by JS</small></p>
+				 </div>
+			</div>
+			<div class="col-md-4">
+				<img id="logo" src="https://cdn.mos.cms.futurecdn.net/baYs9AuHxx9QXeYBiMvSLU.jpg"/>
+			</div>
+		</div>
+	</div>
+	<section class="mt-5">
+	<span>
+		<h1 id="apod">Astronomy Picture Of The Day</h1>
+	</span>
+		  <div class="row no-gutters mt-5">
+			<div class="col-md-7">
+			  <img src="<%= apod.hdurl %>" class="card-img" alt="img">
+			</div>
+			<div class="col-md-5">
+				<div class="card-body p-0 pl-5 m-0">
+					<h5 class="card-title"><%= apod.title %></h5>
+					<p class="card-text"><%= apod.explanation %></p>
+					<p class="card-text"><small class="text-muted"><%= apod.date %></small></p>
+				</div>
+			</div>
+			</div>
+
+		<div class="row justify-content-end m-0 mt-1">
+			<div class="form-group">
+				<form action="/results" method="get">
+						<label for="ApodDate">Search Archived APOD</label>
+					<div class="d-flex">
+						<input id="ApodDate" type="date" name="search" max='2019-08-01'>
+						<button class="btn btn-sm bg-dark text-white ml-1 archive">Search!</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	<section>
+</div>
+<script type="text/javascript" src="/scripts/index.js">
+<% include ./partials/footer %>

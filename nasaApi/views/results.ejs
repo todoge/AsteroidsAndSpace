@@ -1,0 +1,5 @@
+﻿<% include ./partials/header %>
+<% data.photos.forEach(function(item){ %>
+	<img src="<%= item.img_src %>"/>
+<% }) %>
+<% include ./partials/footer %>
