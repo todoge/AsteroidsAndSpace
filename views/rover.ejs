@@ -1,0 +1,72 @@
+﻿<% include ./partials/header %>
+<div class="container mt-3">
+
+	<div>
+		<h1 class="martian">Journey On Mars<h1>
+	</div>
+
+	<div class="card" id="rovercard">
+		<div class="row no-gutters">
+			<div class="col-md-8">
+				<div class="card-body text-white">
+					<h5 class="card-title">MARS ROVER</h5>
+					<p class="card-text">View stunning images gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</p>
+					<p>You can search by sol (Martian rotation or day) or by Earth date</p>
+				 </div>
+			</div>
+			<div class="col-md-4">
+				<img id="logo" src="/images/mars-rover.jpg"/>
+			</div>
+		</div>
+	</div>
+	<section class="mt-5">
+	<span>
+		<h1 class="center martian">Mars Rover images</h1>
+	</span>
+
+	<%//===============Search function=========================%>
+	<nav class="navbar navbar-expand-lg bg-dark text-light justify-content-end">
+			<div class="form-inline mr-3">
+				<form action="/rover/sol" method="get">
+					<label class="text-left" for="solDate">Search by Sol</label>
+					<div class="d-flex">
+						<input id="solDate" type="number" name="sol">
+						<button class="btn btn-sm bg-martian text-white ml-1">Search!</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="form-inline">
+				<form action="/rover/earth-date" method="get">
+						<label for="EarthDate">Search by Earth Date</label>
+					<div class="d-flex">
+						<input id="earthDate" type="date" name="date">
+						<button class="btn btn-sm bg-martian text-white ml-1">Search!</button>
+					</div>
+				</form>
+			</div>
+	</nav>
+
+	<% data.photos.forEach((picture)=>{ %>
+		<div class="row no-gutters mt-5">
+			<div class="col-md-8">
+				<img src="<%= picture.img_src %>" class="card-img" alt="img">
+			</div>
+			<div class="col-md-4">
+				<div class="card-body p-0 pt-5 pl-5">
+					<h5 class="card-title">Rover name: <%= picture.rover.name %></h5>
+					<p class="card-text"><strong>Landing Date: </strong><%= picture.rover.landing_date %></p>
+					<p class="card-text"><strong>Launch Date: </strong><%= picture.rover.launch_date %></p>
+					<p class="card-text"><strong>Sol: </strong><%= picture.sol %></p>
+					<p class="card-text"><strong>Earth Date: </strong><%= picture.earth_date %></p>
+					<p class="card-text"><strong>Camera: </strong><%= picture.camera.full_name %>(<%= picture.camera.name %>)</p>
+					<p class="card-text"><strong>Max Sol: </strong><%= picture.rover.max_sol %></p>
+					<p class="card-text"><strong>Max Date: </strong><%= picture.rover.max_date %></p>
+				</div>
+			</div>
+		</div>
+	<% }) %>
+	<section>
+</div>
+<script type="text/javascript" src="/scripts/index.js">
+<% include ./partials/footer %>

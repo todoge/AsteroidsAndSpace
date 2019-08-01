@@ -1,4 +1,4 @@
-﻿.card{
+﻿#homecard{
     background-color:black;
     height:auto;
 }
@@ -6,9 +6,22 @@
     width:100%;
     height:100%;
 }
-#apod{
+.center{
     text-align:center;
 }
 #nasaLink {
     color: #a19e97;
 }
+#rovercard {
+    background-color: #934838;
+    height: auto;
+}
+
+.martian {
+    color: #a1251b;
+}
+
+.bg-martian {
+    background-color: #a1251b;
+}
+
