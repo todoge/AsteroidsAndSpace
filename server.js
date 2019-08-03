@@ -3,6 +3,7 @@ const express = require("express");
 const request = require("request");
 var app = express();
 
+
 //Serve Public directory
 app.use(express.static(__dirname + "/public"));
 
@@ -63,6 +64,34 @@ app.get("/rover/earth-date", (req, res) => {
 		if (!error && response.statusCode == 200) {
 			var data = JSON.parse(body);
 			res.render("rover", { data: data });
+		}
+	})
+})
+
+//DSCOVR EPIC ROUTE
+
+app.get("/epic", (req, res) => {
+	var defaultdate = "2019-01-01";
+	var date = defaultdate.replace(/-/g, "/");
+	var url = "https://api.nasa.gov/EPIC/api/natural/date/" + defaultdate + "?api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0";
+	console.log(url);
+	request(url, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			var data = JSON.parse(body);
+			res.render("epic", { data: data, date: date });
+		}
+	})
+})
+
+app.get("/epic/pictures", (req, res) => {
+	var query = req.query.date;
+	var date = query.replace(/-/g, "/");
+	var url = "https://api.nasa.gov/EPIC/api/natural/date/" + query + "?api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0";
+	console.log(url);
+	request(url, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			var data = JSON.parse(body);
+			res.render("epic", { data: data, date: date});
 		}
 	})
 })

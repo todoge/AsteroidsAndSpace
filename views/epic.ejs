@@ -1,0 +1,56 @@
+﻿<% include ./partials/header %>
+<link rel="stylesheet" href="/stylesheets/earth.css" type="text/css">
+<div class="container mt-3">
+
+	<div>
+		<h1 class="earth">DISCOVER Our EPIC Earth<h1>
+	</div>
+
+	<div class="card border-0" id="epiccard">
+		<div class="row no-gutters">
+			<div class="col-md-8">
+				<div class="card-body text-white">
+					<h5 class="card-title">DSCOVR: EPIC</h5>
+					<p class="card-text">Earth Polychromatic Imaging Camera</p>
+					<p class="card-text">See images of the entire sunlit side of Earth, and watch time-lapse videos of Earth spinning created from those images. The Earth Polychromatic Imaging Camera, or EPIC, is one million miles from the planet.</p>
+					<p class="card-text">DSCOVR orbits where the matching pull of gravity from the sun and Earth allows the satellite to stay relatively stable between the two bodies. From this distance, EPIC captures a color image of the sunlit side of Earth at least once every two hours.</p>
+				 </div>
+			</div>
+			<div class="col-md-4">
+				<img id="logo" src="/images/epic-earth.png"/>
+			</div>
+		</div>
+	</div>
+	<section class="mt-5">
+	<span>
+		<h1 class="center martian">Discovr: EPIC images</h1>
+	</span>
+
+		<%//===============Search function=========================%>
+	<nav class="navbar navbar-expand-lg bg-dark text-light justify-content-end">
+		<div class="form-inline">
+			<form action="/epic/pictures" method="get">
+					<label for="epicDate">Search by Earth Date</label>
+				<div class="d-flex">
+					<input id="epicDate" type="date" name="date">
+					<button class="btn btn-sm bg-martian text-white ml-1">Search!</button>
+				</div>
+			</form>
+		</div>
+	</nav>
+
+	<% data.forEach((picture)=>{ %>
+		<div class="row no-gutters mt-5">
+			<div class="col-md-8">
+				<img src="https://epic.gsfc.nasa.gov/archive/natural/<%= date %>/png/<%= picture.image %>.png" class="card-img" alt="img">
+			</div>
+			<div class="col-md-4">
+				<div class="card-body p-0 pt-5 pl-5">
+					
+				</div>
+			</div>
+		</div>
+	<% }) %>
+	<section>
+</div>
+<% include ./partials/footer %>

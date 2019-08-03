@@ -28,10 +28,19 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="public\images\epic-earth.png" />
+    <Content Include="public\images\nasa-logo.jpg" />
+    <Content Include="public\images\mars-rover.jpg" />
     <Content Include="public\scripts\index.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\stylesheets\main.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\stylesheets\earth.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\epic.ejs">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\partials\footer.ejs" />
@@ -40,6 +49,9 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="views\index.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\rover.ejs">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\results.ejs">

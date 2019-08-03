@@ -1,0 +1,11 @@
+﻿body {
+    background-color: #1b1b1f;
+}
+#epiccard {
+    background-image: linear-gradient(to right, #000046, #1cb5e0);
+}
+
+.earth {
+    color: #1cb5e0;
+}
+
