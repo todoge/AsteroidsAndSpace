@@ -6,11 +6,12 @@ var app = express();
 //Serve Public directory
 app.use(express.static(__dirname + "/public"));
 
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
+var apikey = process.env.apikey;
 
 //index route
 app.get("/", (req, res) => {
-	var url = "https://api.nasa.gov/planetary/apod?api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0";
+	var url = "https://api.nasa.gov/planetary/apod?api_key="+apikey;
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var apod = JSON.parse(body);
@@ -21,7 +22,7 @@ app.get("/", (req, res) => {
 
 app.get("/APOD", (req, res) => {
 	var query = req.query.search;
-	var url = "https://api.nasa.gov/planetary/apod?api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0&date=" + query;
+	var url = "https://api.nasa.gov/planetary/apod?api_key=" + apikey + "&date=" + query;
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var apod = JSON.parse(body);
@@ -33,7 +34,7 @@ app.get("/APOD", (req, res) => {
 
 //rover route
 app.get("/rover", (req, res) => {
-	var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0"
+	var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=" + apikey;
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var data = JSON.parse(body);
@@ -44,7 +45,7 @@ app.get("/rover", (req, res) => {
 
 app.get("/rover/sol", (req, res) => {
 	var query = req.query.sol;
-	var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=" + query + "&api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0";
+	var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=" + query + "&api_key=" + apikey;
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var data = JSON.parse(body);
@@ -55,7 +56,7 @@ app.get("/rover/sol", (req, res) => {
 
 app.get("/rover/earth-date", (req, res) => {
 	var query = req.query.date;
-	var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=" + query + "&api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0";
+	var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=" + query + "&api_key=" + apikey;
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var data = JSON.parse(body);
@@ -69,7 +70,7 @@ app.get("/rover/earth-date", (req, res) => {
 app.get("/epic", (req, res) => {
 	var defaultdate = "2019-01-01";
 	var date = defaultdate.replace(/-/g, "/");
-	var url = "https://api.nasa.gov/EPIC/api/natural/date/" + defaultdate + "?api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0";
+	var url = "https://api.nasa.gov/EPIC/api/natural/date/" + defaultdate + "?api_key=" + apikey;
 	console.log(url);
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
@@ -82,8 +83,7 @@ app.get("/epic", (req, res) => {
 app.get("/epic/pictures", (req, res) => {
 	var query = req.query.date;
 	var date = query.replace(/-/g, "/");
-	var url = "https://api.nasa.gov/EPIC/api/natural/date/" + query + "?api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0";
-	console.log(url);
+	var url = "https://api.nasa.gov/EPIC/api/natural/date/" + query + "?api_key=" + apikey;
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var data = JSON.parse(body);
