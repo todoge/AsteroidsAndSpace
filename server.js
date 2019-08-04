@@ -3,7 +3,6 @@ const express = require("express");
 const request = require("request");
 var app = express();
 
-
 //Serve Public directory
 app.use(express.static(__dirname + "/public"));
 
@@ -23,7 +22,6 @@ app.get("/", (req, res) => {
 app.get("/APOD", (req, res) => {
 	var query = req.query.search;
 	var url = "https://api.nasa.gov/planetary/apod?api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0&date=" + query;
-	console.log(url);
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var apod = JSON.parse(body);
@@ -47,7 +45,6 @@ app.get("/rover", (req, res) => {
 app.get("/rover/sol", (req, res) => {
 	var query = req.query.sol;
 	var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=" + query + "&api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0";
-	console.log(url);
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var data = JSON.parse(body);
@@ -59,7 +56,6 @@ app.get("/rover/sol", (req, res) => {
 app.get("/rover/earth-date", (req, res) => {
 	var query = req.query.date;
 	var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=" + query + "&api_key=4iNzjDuFNlssLja0bCjfHeUc8tM3RBk1mIaSLbQ0";
-	console.log(url);
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var data = JSON.parse(body);

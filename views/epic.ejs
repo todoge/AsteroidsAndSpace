@@ -23,7 +23,7 @@
 	</div>
 	<section class="mt-5">
 	<span>
-		<h1 class="center martian">Discovr: EPIC images</h1>
+		<h1 class="center earth">Discovr: EPIC images</h1>
 	</span>
 
 		<%//===============Search function=========================%>
@@ -33,7 +33,7 @@
 					<label for="epicDate">Search by Earth Date</label>
 				<div class="d-flex">
 					<input id="epicDate" type="date" name="date">
-					<button class="btn btn-sm bg-martian text-white ml-1">Search!</button>
+					<button class="btn btn-sm bg-earth text-white ml-1">Search!</button>
 				</div>
 			</form>
 		</div>
@@ -41,12 +41,91 @@
 
 	<% data.forEach((picture)=>{ %>
 		<div class="row no-gutters mt-5">
-			<div class="col-md-8">
+			<div class="col-md-5">
 				<img src="https://epic.gsfc.nasa.gov/archive/natural/<%= date %>/png/<%= picture.image %>.png" class="card-img" alt="img">
 			</div>
-			<div class="col-md-4">
-				<div class="card-body p-0 pt-5 pl-5">
-					
+			<div class="col-md-7">
+				<div class="card-body p-0 pl-5 text-white">
+					<p><%= picture.caption%> - <%= picture.date%></p>
+					<table class="table table-bordered text-white">
+						<theah>
+							<tr>
+								<th scope="col">Coodinates</th>
+								<th scope="col">dscovr_j2000_position</th>
+								<th scope="col">lunar_j2000_position</th>
+								<th scope="col">sun_j2000_position</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+							  <th scope="row">x</th>
+							  <td><%=picture.dscovr_j2000_position.x%></td>
+							  <td><%=picture.lunar_j2000_position.x%></td>
+							  <td><%=picture.sun_j2000_position.x%></td>
+							</tr>
+							<tr>
+							  <th scope="row">y</th>
+							  <td><%=picture.dscovr_j2000_position.y%></td>
+							  <td><%=picture.lunar_j2000_position.y%></td>
+							  <td><%=picture.sun_j2000_position.y%></td>
+							</tr>
+							<tr>
+							  <th scope="row">z</th>
+							  <td><%=picture.dscovr_j2000_position.z%></td>
+							  <td><%=picture.lunar_j2000_position.z%></td>
+							  <td><%=picture.sun_j2000_position.z%></td>
+							</tr>
+					</table>
+					<div class="row">
+						<div class="col-lg-6">
+							<table class="table table-bordered text-white">
+								<thead>
+									<tr>
+										<th></th>
+										<th>centroid_coordinates</th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>lat</td>
+									<td><%=picture.centroid_coordinates.lat%></td>
+								</tr>
+								<tr>
+									<td>lon</td>
+									<td><%=picture.centroid_coordinates.lon%></td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-lg-6">
+							<table class="table table-sm text-white">
+								<thead>
+									<tr>
+										<th></th>
+										<th>attitude_quaternions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>q0</td>
+										<td><%=picture.attitude_quaternions.q0%></td>
+									</tr>
+									<tr>
+										<td>q1</td>
+										<td><%=picture.attitude_quaternions.q1%></td>
+									</tr>
+									<tr>
+										<td>q2</td>
+										<td><%=picture.attitude_quaternions.q2%></td>
+									</tr>
+									<tr>
+										<td>q3</td>
+										<td><%=picture.attitude_quaternions.q3%></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,15 @@
+﻿body {
+    background-image: linear-gradient(to right,#140800,#763a2d,#140800);
+}
+#rovercard {
+    background-color: #934838;
+    height: auto;
+}
+
+.martian {
+    color: #edae82;
+}
+
+.bg-martian {
+    background-color: #a1251b;
+}

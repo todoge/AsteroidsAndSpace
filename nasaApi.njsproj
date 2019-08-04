@@ -40,6 +40,9 @@
     <Content Include="public\stylesheets\earth.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\stylesheets\mars-rover.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\epic.ejs">
       <SubType>Code</SubType>
     </Content>
