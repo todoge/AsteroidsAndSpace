@@ -1,6 +1,5 @@
 ﻿<% include ./partials/header %>
 <div class="container mt-3">
-
 	<div>
 		<h1>A Journey Through Space<h1>
 	</div>
@@ -31,7 +30,7 @@
 			  <img src="<%= apod.url %>" class="card-img" alt="img">
 			</div>
 			<div class="col-md-5">
-				<div class="card-body p-0 pl-5 m-0">
+				<div class="card-body p-0 pl-md-5 m-0">
 					<h5 class="card-title"><%= apod.title %></h5>
 					<p class="card-text"><%= apod.explanation %></p>
 					<p class="card-text"><small class="text-muted"><%= apod.date %></small></p>
@@ -51,7 +50,7 @@
 				</form>
 			</div>
 		</div>
-	<section>
+	</section>
 </div>
 <script type="text/javascript" src="/scripts/index.js">
 <% include ./partials/footer %>
